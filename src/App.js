@@ -23,7 +23,7 @@ function Welcome(props) {
   return <h1>Welcome component: Hello, {props.name}</h1>;
 }
 
-// Classes have some additional features...
+// Classes have some additional features... (state!)
 // class Welcome extends React.Component {
 //   render() {
 //     return <h1>Hello, {this.props.name}</h1>;
@@ -84,6 +84,61 @@ const comment = {
   }
 };
 
+// We want to write this once and have the Clock update itself
+
+// function Clock(props) {
+  //   return (
+    //     <div>
+    //       <h1>Hello, world!</h1>
+    //       <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    //     </div>
+    //   );
+    // }
+    
+// To implement this, we need to add “state” to the Clock component.
+// State is similar to props, but it is private and fully controlled by the component.
+
+// Clock component with state
+class Clock extends React.Component {
+  
+  // Add a class constructor that assigns the initial this.state:
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()}; // current time. We will later update this state.
+  }
+
+  // The componentDidMount() hook runs after the component output has been rendered to the DOM
+  // When the Clock output is inserted in the DOM, React calls the componentDidMount()
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000 // Every second the browser calls the tick() method.
+    );
+  }
+
+  // If the Clock component is ever removed from the DOM, React calls the componentWillUnmount()
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    // Thanks to the setState() call, React knows the state has changed, and calls render() method again to learn what should be on the screen.
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+
 class App extends Component {
   render() {
     return (
@@ -99,6 +154,9 @@ class App extends Component {
         <Welcome name="Rodrigo" /> {/* Calls the Welcome component */}
 
         <Comment date={comment.date} author={comment.author} text={comment.text} />
+
+        <p>Clock component:</p>
+        <Clock />
       </div>
     );
   }
