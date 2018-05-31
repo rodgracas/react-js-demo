@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-
 // React is pretty flexible but it has a single strict rule:
 // All React components must act like pure functions with respect to their props.
 
@@ -19,16 +18,16 @@ function withdraw(account, amount) {
 
 
 // Functional component
-function Welcome(props) {
-  return <h1>Welcome component: Hello, {props.name}</h1>;
-}
+// function Welcome(props) {
+//   return <h1>Welcome component: Hello, {props.name}</h1>;
+// }
 
 // Classes have some additional features... (state!)
-// class Welcome extends React.Component {
-//   render() {
-//     return <h1>Hello, {this.props.name}</h1>;
-//   } 
-// }
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  } 
+}
 
 function formatDate(date) {
   return date.toLocaleDateString();
@@ -84,32 +83,49 @@ const comment = {
   }
 };
 
-// We want to write this once and have the Clock update itself
+// State and Lifecycle
+// In this section, we will learn how to make the Clock component truly reusable and encapsulated. It will set up its own timer and update itself every second.
 
 // function Clock(props) {
-  //   return (
-    //     <div>
-    //       <h1>Hello, world!</h1>
-    //       <h2>It is {props.date.toLocaleTimeString()}.</h2>
-    //     </div>
-    //   );
-    // }
-    
+//   return (
+//     <div>
+//       <h1>Hello, world!</h1>
+//       <h2>It is {props.date.toLocaleTimeString()}.</h2>
+//     </div>
+//   );
+// }
+
+// function tick() {
+//   ReactDOM.render(
+//     <Clock date={new Date()} />,
+//     document.getElementById('root')
+//   );
+// }
+
+// setInterval(tick, 1000);
+
+// We want to write this once and have the Clock update itself
+
+// ReactDOM.render(
+//   <Clock />,
+//   document.getElementById('root')
+// );
+
 // To implement this, we need to add “state” to the Clock component.
 // State is similar to props, but it is private and fully controlled by the component.
 
-// Clock component with state
+// Clock component (with state)
 class Clock extends React.Component {
   
   // Add a class constructor that assigns the initial this.state:
   constructor(props) {
-    super(props);
+    super(props); // Class components should always call the base constructor with props.
     this.state = {date: new Date()}; // current time. We will later update this state.
   }
 
   // The componentDidMount() hook runs after the component output has been rendered to the DOM
   // When the Clock output is inserted in the DOM, React calls the componentDidMount()
-  componentDidMount() {
+  componentDidMount() { // These methods are called “lifecycle hooks”.
     this.timerID = setInterval(
       () => this.tick(),
       1000 // Every second the browser calls the tick() method.
@@ -117,7 +133,7 @@ class Clock extends React.Component {
   }
 
   // If the Clock component is ever removed from the DOM, React calls the componentWillUnmount()
-  componentWillUnmount() {
+  componentWillUnmount() { // These methods are called “lifecycle hooks”.
     clearInterval(this.timerID);
   }
 
@@ -139,7 +155,7 @@ class Clock extends React.Component {
 }
 
 
-// === Handling Events === 
+// Handling Events 
 
 function ActionLink() {
   
@@ -176,10 +192,13 @@ class Toggle extends React.Component {
       </button>
     );
     
-    // Passing Arguments to Event Handlers
-    {/* <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button> */}
+    
   }
 }
+
+// Passing Arguments to Event Handlers
+{/* <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button> */}
+{/*<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>*/}
 
 class App extends Component {
   render() {
