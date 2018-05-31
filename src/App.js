@@ -7,6 +7,7 @@ import HandlingEvents from './components/HandlingEvents';
 import ConditionalRendering from './components/ConditionalRendering';
 import ListsAndKeys from './components/ListsAndKeys';
 import Forms from './components/Forms';
+import LiftingStateUp from './components/LiftingStateUp';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
         <ConditionalRendering />
         <ListsAndKeys />
         <Forms />
+        <LiftingStateUp />
       </div>
     );
   }
