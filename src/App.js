@@ -6,6 +6,7 @@ import StateAndLifecycle from './components/StateAndLifecycle';
 import HandlingEvents from './components/HandlingEvents';
 import ConditionalRendering from './components/ConditionalRendering';
 import ListsAndKeys from './components/ListsAndKeys';
+import Forms from './components/Forms';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
         <HandlingEvents />
         <ConditionalRendering />
         <ListsAndKeys />
+        <Forms />
       </div>
     );
   }

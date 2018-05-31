@@ -29,3 +29,14 @@ body {
   padding: 20px;
   background-color: sandybrown;
 }
+
+.Forms {
+  padding: 20px;
+  background-color: turquoise;
+}
+
+.Forms textarea {
+  width: 400px;
+  height: 100px;
+  padding: 10px;
+}
