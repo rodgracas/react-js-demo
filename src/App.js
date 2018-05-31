@@ -4,6 +4,7 @@ import './App.css';
 import ComponentsAndProps from './components/ComponentsAndProps';
 import StateAndLifecycle from './components/StateAndLifecycle';
 import HandlingEvents from './components/HandlingEvents';
+import ConditionalRendering from './components/ConditionalRendering';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <ComponentsAndProps />
         <StateAndLifecycle />
         <HandlingEvents />
+        <ConditionalRendering />
       </div>
     );
   }
