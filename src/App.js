@@ -5,6 +5,7 @@ import ComponentsAndProps from './components/ComponentsAndProps';
 import StateAndLifecycle from './components/StateAndLifecycle';
 import HandlingEvents from './components/HandlingEvents';
 import ConditionalRendering from './components/ConditionalRendering';
+import ListsAndKeys from './components/ListsAndKeys';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <StateAndLifecycle />
         <HandlingEvents />
         <ConditionalRendering />
+        <ListsAndKeys />
       </div>
     );
   }
