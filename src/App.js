@@ -8,6 +8,7 @@ import ConditionalRendering from './components/ConditionalRendering';
 import ListsAndKeys from './components/ListsAndKeys';
 import Forms from './components/Forms';
 import LiftingStateUp from './components/LiftingStateUp';
+import CompositionVsInheritance from './components/CompositionVsInheritance';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
         <ListsAndKeys />
         <Forms />
         <LiftingStateUp />
+        <CompositionVsInheritance />
       </div>
     );
   }
